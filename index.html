@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>USDT 在线支付与出款资料页｜常见问题与安全指南</title>
+  <meta name="description" content="整理 USDT 支付、TRC20/ERC20、TXID 查询、出款延迟排查与安全注意事项的简明资料页。适合新手快速查阅。" />
+
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="./" />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.12);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.72);
+      --accent:#22c55e;
+      --accent2:#60a5fa;
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 10% 10%, rgba(96,165,250,.25), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(34,197,94,.18), transparent 60%),
+        linear-gradient(180deg, #070b14 0%, #0b1220 60%, #070b14 100%);
+      line-height:1.75;
+    }
+    a{color:inherit}
+    .wrap{max-width:1080px;margin:0 auto;padding:40px 18px 80px}
+    .hero{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border-radius:22px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .badge{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 12px;border-radius:999px;
+      background:rgba(34,197,94,.12);
+      border:1px solid rgba(34,197,94,.25);
+      color:rgba(235,255,242,.95);
+      font-size:13px;
+    }
+    .title{margin:14px 0 6px;font-size:34px;letter-spacing:.2px}
+    .sub{margin:0;color:var(--muted);max-width:820px}
+    .ctaRow{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 14px;border-radius:14px;text-decoration:none;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      transition:.18s ease;
+      font-weight:600;
+    }
+    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.09)}
+    .btn.primary{
+      border-color:rgba(34,197,94,.35);
+      background:linear-gradient(180deg, rgba(34,197,94,.22), rgba(34,197,94,.10));
+    }
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-top:16px}
+    @media (max-width:920px){.grid{grid-template-columns:1fr}}
+    .card{
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:18px;
+      padding:18px;
+    }
+    .h2{margin:0 0 10px;font-size:18px}
+    .muted{color:var(--muted);font-size:14px}
+    .list{margin:10px 0 0;padding-left:18px;color:rgba(255,255,255,.86)}
+    .kpi{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .pill{
+      padding:8px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.18);
+      font-size:13px;color:rgba(255,255,255,.85)
+    }
+    .faq details{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 14px;
+      background:rgba(255,255,255,.05);
+      margin:10px 0;
+    }
+    .faq summary{cursor:pointer;font-weight:700}
+    .faq p{margin:10px 0 0;color:rgba(255,255,255,.85)}
+    .foot{
+      margin-top:18px;
+      color:rgba(255,255,255,.55);
+      font-size:12px;
+      text-align:center;
+    }
+    .linkBox{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      border:1px dashed rgba(96,165,250,.35);
+      background:rgba(96,165,250,.10);
+      padding:12px 14px;border-radius:16px;
+      margin-top:14px;
+    }
+    code{
+      padding:2px 6px;border-radius:8px;
+      background:rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.10);
+      color:rgba(255,255,255,.90);
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"USDT 在线支付与出款资料页｜常见问题与安全指南",
+    "description":"整理 USDT 支付、TRC20/ERC20、TXID 查询、出款延迟排查与安全注意事项的简明资料页。适合新手快速查阅。",
+    "inLanguage":"zh-CN"
+  }
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="hero">
+      <div class="badge">🧩 SEO04 · USDT 资料页（公开可检索）</div>
+      <h1 class="title">USDT 支付 & 出款：新手快速查阅</h1>
+      <p class="sub">
+        这是一页“能被搜索到、也真的有用”的 USDT 常识与排查清单：网络选择、TXID 查询、出款延迟原因与安全注意事项。
+      </p>
+
+      <div class="ctaRow">
+        <!-- ✅ 只放 1 个主站入口（自然、克制、合规） -->
+        <a class="btn primary" href="https://usdtonlinecasino.com/" target="_blank" rel="nofollow noopener">
+          ✅ 前往主站查看完整内容
+        </a>
+        <a class="btn" href="#faq">查看 FAQ</a>
+        <a class="btn" href="#checklist">排查清单</a>
+      </div>
+
+      <div class="kpi">
+        <span class="pill">TRC20 / ERC20 区别</span>
+        <span class="pill">TXID 查询思路</span>
+        <span class="pill">出款延迟排查</span>
+        <span class="pill">安全注意事项</span>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <div class="card" id="checklist">
+        <h2 class="h2">✅ 出款延迟排查清单（按顺序做）</h2>
+        <p class="muted">建议你把这段当“标准操作流程”，用户看起来也更专业。</p>
+        <ol class="list">
+          <li>先确认出款网络：<code>TRC20</code> 或 <code>ERC20</code>（网络错了会不到账）。</li>
+          <li>向平台索要 <code>TXID</code>（交易哈希）。没有 TXID 就不算“已链上打款”。</li>
+          <li>用区块链浏览器查询 TXID 状态：是否 Pending / Confirmed。</li>
+          <li>核对收款地址前后是否一致（复制粘贴容易错 1-2 位）。</li>
+          <li>若卡在“审核中”，通常是风控或流水规则问题，需要平台明确说明原因。</li>
+        </ol>
+
+        <div class="linkBox">
+          <div>
+            <div style="font-weight:800">🔗 你要的“更完整版本”</div>
+            <div class="muted">主站可以承载更长内容、更多图解与教程。</div>
+          </div>
+          <a class="btn" href="https://usdtonlinecasino.com/" target="_blank" rel="nofollow noopener">打开主站</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="h2">🛡️ USDT 使用安全注意事项</h2>
+        <ul class="list">
+          <li>尽量使用你常用的钱包地址，不要频繁更换。</li>
+          <li>保存每一笔交易的 TXID（截图 + 文本都留一份）。</li>
+          <li>遇到“要再充值一笔才给出款”等要求，要提高警惕。</li>
+          <li>使用交易所收款时，注意是否需要填写 Memo/Tag（部分币种需要）。</li>
+        </ul>
+
+        <div style="height:12px"></div>
+        <h2 class="h2">📌 TRC20 vs ERC20（怎么选）</h2>
+        <p class="muted">
+          一般情况下 TRC20 手续费更低、确认速度更快；ERC20 在以太坊高峰期可能更慢、费用更高。
+          关键是：<strong>收款方支持哪个网络，你就用哪个网络</strong>。
+        </p>
+      </div>
+
+    </div>
+
+    <div class="card faq" id="faq" style="margin-top:16px">
+      <h2 class="h2">FAQ：常见问题</h2>
+
+      <details>
+        <summary>Q：平台说“已出款”，但我还没到账怎么办？</summary>
+        <p>A：先要 TXID。能查到 TXID 且交易已 Confirmed，通常就是收款方处理时间或你选错网络/地址；查不到 TXID 则可能还没真正链上打款。</p>
+      </details>
+
+      <details>
+        <summary>Q：多久算“异常延迟”？</summary>
+        <p>A：不同平台不同。一般 2 小时仍无 TXID 或一直不给 TXID，就要提高警惕；若有 TXID 但链上 Pending，可能是网络拥堵。</p>
+      </details>
+
+      <details>
+        <summary>Q：为什么要做这个页面？</summary>
+        <p>A：这是公开资料页，方便搜索与分享，也能把用户常问的问题集中解释，减少重复沟通。</p>
+      </details>
+    </div>
+
+    <div class="foot">
+      这是 SEO04 的公开资料页（GitHub Pages）。如需更完整的图文教程与页面结构，请在主站查看。
+    </div>
+
+  </div>
+</body>
+</html>
